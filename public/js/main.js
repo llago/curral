@@ -78,7 +78,7 @@ function runQuery() {
     var url = getBaseUrl()+'api/bigquery?query='+query;
 
     console.log("querying...");
-    console.log(url);
+   // console.log(url);
     $.getJSON(url, function(data, status) {
 
         var stateValues = data;
@@ -88,7 +88,7 @@ function runQuery() {
         document.getElementById("resposta").innerHTML = '';
 
         $.each(stateValues, function(i ,item){
-            addRota(item, i);
+            addRota(item);
 
         });
 
@@ -156,14 +156,10 @@ function setUpGoogleMaps()
 }
 
 
-function addRota(onibus, pos)
+function addRota(onibus)
 {
-    console.log("Onibus "+pos);
-    var first = false;
-    if(pos==1)
-    {
-        first = true
-    }
+    //console.log("Onibus "+pos);
+   
     //onibus = [[dataHora, ordem ,latitude, longitude,velocidade, direcao]];
     var onibusLength = onibus.length ;
 
@@ -210,23 +206,7 @@ function addRota(onibus, pos)
 
 
 
-                        // if(first)
-                        // {
-                        //     if(onibusLength > 50){
-                        //         _novarota.push(onibus[i]);
-                        //         _novarotaLatLng.push(currentLatLng );
-                        //     }else{
-                        //         console.log("not length engouh")
-                        //     }
-
-                        // }
-                        // else
-                        // {
-                        //     //console.log("tryto...")
-                        //     trytofindNearestPoint(onibus[i] ,currentLatLng );
-                        // }
-
-
+                 
 
                     }else{
                         //console.log()
@@ -305,60 +285,6 @@ function addRota(onibus, pos)
         response += "</div>";
         document.getElementById("resposta").innerHTML += response;
     }
-}
-
-function trytofindNearestPoint(onibus, onibusLatLng )
-{
-    //onibus = [[dataHora, ordem ,latitude, longitude,velocidade, direcao]];
-    var onibusDirecao = onibus[5];
-    //console.log(onibus);
-    var position = 0;
-    var bool  = false;
-
-
-    //init for the first one
-    var previousDistance = 500; //testing
-    for(var i = 0 ; i < _novarota.length ; i++ )
-    {
-        var arrayLatLng = new google.maps.LatLng(_novarota[i][2], _novarota[i][3]);
-        var currentDistance = distanceBetweenTwoLatLngWithGmaps(arrayLatLng , onibusLatLng);
-        if(currentDistance < previousDistance)
-        {
-            var arrayDirecao = _novarota[i][5];
-            if(isSameDirecao(onibusDirecao , arrayDirecao))
-            {
-                position = i;
-                previousDistance = currentDistance;
-                bool = true;
-                console.log("found !");
-
-            }else{
-                //console.log("distance ok but not direcao : onibus : " + onibusDirecao + " | array : " + arrayDirecao);
-            }
-        }else{
-            //console.log("distance = " + currentDistance);
-        }
-    }
-
-    if(bool)
-    {
-        _novarota.splice(position,0,onibus);
-        _novarotaLatLng.splice(position,0,onibusLatLng );
-        console.log("lenght : "+_novarotaLatLng.length);
-        return true;
-    }
-    return false;
-}
-
-function isSameDirecao(dir1, dir2) {
-    if(dir1 > 0 && dir1 < 360) {
-        if (dir2 > 0 && dir2 < 350) {
-           return (dir1 - dir2) < 10
-        }
-    }else{
-        return false;
-    }
-
 }
 
 
