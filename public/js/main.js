@@ -12,6 +12,15 @@ var _novarota = [] ;
 var _novarotaLatLng = [];
 
 var _map;
+
+
+function getBaseUrl() {
+    var re = new RegExp(/^.*\//);
+    return re.exec(window.location.href);
+}
+
+
+
 function runQuery() {
     startLoadingAnimation();
 
@@ -66,9 +75,10 @@ function runQuery() {
 
 
     //TODO should send something nicer;;;
-    var url = 'https://riobus-analytics.herokuapp.com/api/bigquery?query='+query;
+    var url = getBaseUrl()+'/api/bigquery?query='+query;
 
     console.log("querying...");
+    console.log(url);
     $.getJSON(url, function(data, status) {
 
         var stateValues = data;
