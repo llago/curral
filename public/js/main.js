@@ -75,7 +75,7 @@ function runQuery() {
 
 
     //TODO should send something nicer;;;
-    var url = getBaseUrl()+'/api/bigquery?query='+query;
+    var url = getBaseUrl()+'api/bigquery?query='+query;
 
     console.log("querying...");
     console.log(url);
