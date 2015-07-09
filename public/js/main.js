@@ -66,7 +66,7 @@ function runQuery() {
 
 
     //TODO should send something nicer;;;
-    var url = 'http://localhost:3000/api/bigquery?query='+query;
+    var url = 'https://riobus-analytics.herokuapp.com/api/bigquery?query='+query;
 
     console.log("querying...");
     $.getJSON(url, function(data, status) {
