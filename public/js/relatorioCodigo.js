@@ -422,6 +422,7 @@ window.onload = function() {
         }
 
         $.getJSON(url, function(data, status) {
+            console.log(status);
             if (dateNow.is(":checked")) {
                 data = [data];
                 if(toDateTime(data[0].LASTUPDATE) < getDateTimeBoundary(1)) {
@@ -435,7 +436,6 @@ window.onload = function() {
             }
             switch (selected) {
                 case "empty-lines":
-                    console.log(data);
                     result = emptyLines(data)
                     break;
                 case "lines-with-no-buses":

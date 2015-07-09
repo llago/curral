@@ -28,18 +28,7 @@ body {
 	margin-bottom: 20px;
 }
 a { cursor: pointer; }
-a:link {
-color: #006633;
-}
-a:visited {
-color: #003300;
-}
-a:hover {
-color: #003300;
-}
-a:active {
-color: #003300;
-}
+
 
 #show-map{
 	height: 600px;	
