@@ -3,6 +3,7 @@
 var _mostrarRotas = false;
 var _mostrarPontos = false;
 var _mostrarDirecao = false;
+var _mostrarCalor = false;
 //saving the data
 var _rotas = [];
 var _pontos = [];
@@ -10,7 +11,7 @@ var _pontos = [];
 
 var _novarota = [] ;
 var _novarotaLatLng = [];
-
+var _allLatLng = [];
 var _map;
 
 
@@ -31,6 +32,7 @@ function runQuery() {
 
     if($('#linea').val())
         line =  $('#linea').val();
+
 
     //TODO should check if the date is not to big...
     //TODO should check if the initialDate < finalDate
@@ -53,6 +55,8 @@ function runQuery() {
     _mostrarRotas = ($('#mostrar-rotas').is(':checked')) ? true : false ;
     _mostrarPontos = ($('#mostrar-pontos').is(':checked')) ? true : false ;
     _mostrarDirecao = ($('#mostrar-direcao').is(':checked')) ? true : false ;
+    _mostrarCalor = ($('#mostrar-calor').is(':checked')) ? true : false ;
+   
 
 
     //Making the query
@@ -94,22 +98,9 @@ function runQuery() {
 
         if(line)addDefaultRota(line, _map);
 
-
-
-
-        // var newRota = new google.maps.Polyline({
-        //     path: _novarotaLatLng,
-        //     map: _map,
-        //     strokeColor: "#ff0000",
-        //     strokeOpacity: 0.9,
-        //     strokeWeight: 2,
-        //     fillOpacity : 0
-        // });
-
-        // console.log("pontos " + _novarotaLatLng.length);
-
-        // newRota.setMap(_map);
-        // //save rota
+        if(_mostrarCalor){     
+           createCalor(_allLatLng);
+        }
     });
 
 
@@ -203,7 +194,7 @@ function addRota(onibus)
                         onibusTotalDistance += GmapDistance;
                         tmp.push(currentLatLng); //TODO should remove this and use savedOnibus...
                         savedOnibus.push(onibus[i]);
-
+                        _allLatLng.push(currentLatLng);
 
 
                  
@@ -266,6 +257,8 @@ function addRota(onibus)
                 createArrow(tmp[i], savedOnibus[i][5], color);
             }
         }
+
+     
 
         //add direçao
 
@@ -352,6 +345,17 @@ function createMarker(latlng,color, html) {
     });
 
     return newmarker;
+}
+
+
+function createCalor(pointArray) {
+    var heatmap = new google.maps.visualization.HeatmapLayer({
+    data: pointArray
+  });
+
+  heatmap.setMap(_map);
+  
+   
 }
 
 function distanceBetweenTwoLatLngWithGmaps(LatLng1 , LatLng2) {
