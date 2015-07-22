@@ -40,6 +40,8 @@ if ('development' == app.get('env')) {
 app.get('/', routes.index);
 
 app.get('/kmrodado', v2.kmrodado);
+
+app.get('/km_bar', v2.km_bar);
 app.get('/api/bigquery', api.bigquery);
 
 http.createServer(app).listen(app.get('port'), function(){
