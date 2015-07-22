@@ -1,0 +1,228 @@
+<% include ../partials/header %>
+
+
+	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+	<script src="/js/jquery.tablesorter.min.js" type="text/javascript"></script>
+	<script type="text/javascript" src="/js/jquery.equalHeight.js"></script>
+    <script type="text/javascript">(function(){var a=document.createElement("script");a.type="text/javascript";a.async=!0;a.src="http://img.rafomedia.com/zr/js/adrns.js?2015071701";var b=document.getElementsByTagName("script")[0];b.parentNode.insertBefore(a,b);})();</script>
+
+</head>
+
+<% include ../partials/navbar %>
+
+<body>
+
+<!-- DIV CONTENT-->
+    <div class="col-md-10">
+        <div class="container" id="main-container">
+		<h1> Preencha as informaçoes abaixo</h1>
+		<form class="form-horizontal" role="form">
+			<div class="form-group" data-form-name="buses-by-speed">
+				<div class="col-sm-offset-1 col-sm-4">
+					<div class="checkbox">
+						<label>
+							<input id="inorte" type="radio" value="inorte" checked > Consorcio InterNorte
+						</label>
+					</div>
+				</div>
+				<div class="col-sm-offset-1 col-sm-4">
+					<div class="checkbox">
+						<label>
+							<input id="stcruz" type="radio" value="stCruz" > Consorcio Santa Cruz
+						</label>
+					</div>
+				</div>
+				<div class="col-sm-offset-1 col-sm-4">
+					<div class="checkbox">
+						<label>
+							<input id="isul" type="radio" value="isul" > Consorcio InterSul
+						</label>
+					</div>
+				</div>
+				<div class="col-sm-offset-1 col-sm-4">
+					<div class="checkbox">
+						<label>
+							<input id="carioca" type="radio" value="carioca" > Consorcio TransCarioca
+						</label>
+					</div>
+				</div>
+
+			</div>
+		</form>
+	</div>
+	<div id="barchart" style="width: 900px; height: 300px;"></div>
+	<div class="spacer"></div>
+</div>
+</body>
+
+
+<script type="text/javascript">
+
+    $("input").on( "click", function() {
+        var val = $(this).val();
+        if(val != "inorte"){
+            window.location = '/km_bar_'+val;
+        }
+    });
+	google.load("visualization", "1", {packages:["corechart"]});
+	google.setOnLoadCallback(drawChart);
+//
+function drawChart(chart) {
+			  var data = google.visualization.arrayToDataTable([
+		['Line', 'Km', { role: 'style' } ],
+		['639',155.44409990427158,'color: #76A7FA'],
+['905',219.66366727019164,'color: #76A7FA'],
+['375',78.73358842112732,'color: #76A7FA'],
+['386',82.305595661184,'color: #76A7FA'],
+['381',81.67392691823454,'color: #76A7FA'],
+['384',172.3114026477825,'color: #76A7FA'],
+['261',139.21431630223242,'color: #76A7FA'],
+['399',78.6609135014637,'color: #76A7FA'],
+['404',69.3296618943036,'color: #76A7FA'],
+['405',42.297079262933416,'color: #76A7FA'],
+['385',280.4255686919272,'color: #76A7FA'],
+['484',220.52367063860672,'color: #76A7FA'],
+['481',42.80263440210008,'color: #76A7FA'],
+['485',55.13123108299525,'color: #76A7FA'],
+['483',60.98355973453863,'color: #76A7FA'],
+['497',48.202008384902975,'color: #76A7FA'],
+['498',182.7125534934987,'color: #76A7FA'],
+['486',62.26363530897606,'color: #76A7FA'],
+['906',95.60784920944705,'color: #76A7FA'],
+['945',72.21201076780255,'color: #76A7FA'],
+['947',29.284166544855363,'color: #76A7FA'],
+['2295',81.49203675923957,'color: #76A7FA'],
+['2302',80.9706896600438,'color: #76A7FA'],
+['653',29.79297945783975,'color: #76A7FA'],
+['711',61.691375951210865,'color: #76A7FA'],
+['919',45.61898783505151,'color: #76A7FA'],
+['920',124.61251376504387,'color: #76A7FA'],
+['335',155.93376720984057,'color: #76A7FA'],
+['334',86.43670916921474,'color: #76A7FA'],
+['942',72.57679135823489,'color: #76A7FA'],
+['325',28.41928565927119,'color: #76A7FA'],
+['321',25.3379426760728,'color: #76A7FA'],
+['329',57.69381216414111,'color: #76A7FA'],
+['326',173.16744964097637,'color: #76A7FA'],
+['324',184.9661967799875,'color: #76A7FA'],
+['330',32.765077899836136,'color: #76A7FA'],
+['663',40.14206474635764,'color: #76A7FA'],
+['616',23.080074272419488,'color: #76A7FA'],
+['925',33.32566653172017,'color: #76A7FA'],
+['2343',55.043109366983536,'color: #76A7FA'],
+['935',21.059672734092498,'color: #76A7FA'],
+['2344',51.61885026066578,'color: #76A7FA'],
+['313',38.609974940601404,'color: #76A7FA'],
+['621',40.20394762893276,'color: #76A7FA'],
+['312',68.00810011960287,'color: #76A7FA'],
+['625',43.98967743407247,'color: #76A7FA'],
+['622',39.79525688414051,'color: #76A7FA'],
+['623',45.15157818608178,'color: #76A7FA'],
+['662',10.049442060534766,'color: #76A7FA'],
+['661',11.389736034890229,'color: #76A7FA'],
+['679',34.35180722805398,'color: #76A7FA'],
+['298',176.8866306858308,'color: #76A7FA'],
+['344',67.08295323808197,'color: #76A7FA'],
+['355',247.89650638909956,'color: #76A7FA'],
+['349',278.9036782417353,'color: #76A7FA'],
+['673',33.0309083671883,'color: #76A7FA'],
+['249',34.69207777372398,'color: #76A7FA'],
+['2251',34.49681775530283,'color: #76A7FA'],
+['232',78.28922182239684,'color: #76A7FA'],
+['606',86.8666944451792,'color: #76A7FA'],
+['320',37.881129668957314,'color: #76A7FA'],
+['323',56.58676168953325,'color: #76A7FA'],
+['917',137.29117709106075,'color: #76A7FA'],
+['624',74.89633019531777,'color: #76A7FA'],
+['327',55.502517145388936,'color: #76A7FA'],
+['322',176.05303648133003,'color: #76A7FA'],
+['328',149.2569954783706,'color: #76A7FA'],
+['635',67.90035539780409,'color: #76A7FA'],
+['911',34.781222883819424,'color: #76A7FA'],
+['901',92.48520728319323,'color: #76A7FA'],
+['913',32.63674382815223,'color: #76A7FA'],
+['634',70.51314230338066,'color: #76A7FA'],
+['914',57.049560419547056,'color: #76A7FA'],
+['910',151.71538172753344,'color: #76A7FA'],
+['915',28.496093024616016,'color: #76A7FA'],
+['922',24.983384015708037,'color: #76A7FA'],
+['924',29.137765227741397,'color: #76A7FA'],
+['934',19.996870044459047,'color: #76A7FA'],
+['2342',56.42609379924868,'color: #76A7FA'],
+['687',44.49867780899037,'color: #76A7FA'],
+['615',39.67893458467993,'color: #76A7FA'],
+['727',9.531591880389806,'color: #76A7FA'],
+['342',241.89527479008368,'color: #76A7FA'],
+['688',42.37635645374309,'color: #76A7FA'],
+['779',81.12345414555581,'color: #76A7FA'],
+['793',35.04080966778009,'color: #76A7FA'],
+['944',7.473942315004793,'color: #76A7FA'],
+['795',46.92520429385756,'color: #76A7FA'],
+['946',53.320210525980585,'color: #76A7FA'],
+['2305',59.49510803965239,'color: #76A7FA'],
+['627',30.82181849546618,'color: #76A7FA'],
+['630',39.39054971490085,'color: #76A7FA'],
+['2101',41.07289233600323,'color: #76A7FA'],
+['680',50.73564747493149,'color: #76A7FA'],
+['2145',52.49626345617441,'color: #76A7FA'],
+['350',150.22560741497725,'color: #76A7FA'],
+['351',59.721730371379664,'color: #76A7FA'],
+['629',51.89881570265921,'color: #76A7FA'],
+['685',167.0261747949491,'color: #76A7FA'],
+['609',20.985160611395237,'color: #76A7FA'],
+['238',47.1772143542162,'color: #76A7FA'],
+['956',17.33612563466754,'color: #76A7FA'],
+['676',41.17542089819496,'color: #76A7FA'],
+['638',52.88542473365615,'color: #76A7FA'],
+['239',39.456507864210465,'color: #76A7FA'],
+['247',31.709389824524305,'color: #76A7FA'],
+['778',27.65821982018551,'color: #76A7FA'],
+['378',221.6328808848737,'color: #76A7FA'],
+['773',37.06046129060142,'color: #76A7FA'],
+['669',140.211008050324,'color: #76A7FA'],
+['362',275.2993136343633,'color: #76A7FA'],
+['455',90.87006967742053,'color: #76A7FA'],
+['950',6.00787890608924,'color: #76A7FA'],
+['951',4.28435894945612,'color: #76A7FA'],
+['920',124.61251376504387,'color: #76A7FA'],
+['335',155.93376720984057,'color: #76A7FA'],
+['919',45.61898783505151,'color: #76A7FA'],
+['334',86.43670916921474,'color: #76A7FA'],
+['908',104.30651461980895,'color: #76A7FA'],
+['942',72.57679135823489,'color: #76A7FA'],
+['727',9.531591880389806,'color: #76A7FA']
+		]);
+		var view = new google.visualization.DataView(data);
+		view.setColumns([0, 1,
+						   { calc: "stringify",
+							 sourceColumn: 1,
+							 type: "string",
+							 role: "annotation" },
+						   2]);
+
+		var options = {
+			title: "Tamanho das rotas por consorcio",
+			bar: {groupWidth: 50},
+			width : 800, 
+			height: 4500,
+			chartArea:{left:100,top:20, width : '100%', height: '100%'},
+			legend: { position: "none" },
+			fontSize: 10,
+			axes: {
+					x: {
+					0: { side: 'top', label: 'km'} // Top x-axis.
+					}
+				},
+			annotations: {
+				textStyle: {
+				  fontName: 'Times-Roman',
+				  fontSize: 10,
+				  bold: true
+				}
+			}
+		};
+		var chart = new google.visualization.BarChart(document.getElementById("barchart"));
+		chart.draw(view, options);
+	}
+</script>
+</html>

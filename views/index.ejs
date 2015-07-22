@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>RELATORIO</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/moment-with-locales.min.js"></script>
+    <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/js/bootstrap-datetimepicker.min.js"></script>
+    <script type="text/javascript"
+            src="https://maps.googleapis.com/maps/api/js?v=3&amp;libraries=geometry&amp;sensor=false&amp;"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+	
+	<script src="/js/hideshow.js" type="text/javascript"></script>
+	<script src="/js/jquery.tablesorter.min.js" type="text/javascript"></script>
+	<script type="text/javascript" src="/js/jquery.equalHeight.js"></script>
+	
+    <script type="text/javascript" src="/js/relatorioCodigo.js"></script>
+    <!--<script type="text/javascript" src="js/km-run.js"></script>-->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+    <!--<link href="/css/style.css" rel="stylesheet">-->
+	<link rel="stylesheet" href="/css/layout.css" type="text/css" media="screen" />
+    
+
+
+    </head>
+	<div id="dvLoading" ></div>
+    <script type="text/javascript">
+    $(document).ready(function() 
+    	{ 
+      	  $(".tablesorter").tablesorter(); 
+   	 } 
+	);
+	$(document).ready(function() {
+
+	//When page loads...
+	$(".tab_content").hide(); //Hide all content
+	$("ul.tabs li:first").addClass("active").show(); //Activate first tab
+	$(".tab_content:first").show(); //Show first tab content
+
+	//On Click Event
+	$("ul.tabs li").click(function() {
+
+		$("ul.tabs li").removeClass("active"); //Remove any "active" class
+		$(this).addClass("active"); //Add "active" class to selected tab
+		$(".tab_content").hide(); //Hide all tab content
+
+		var activeTab = $(this).find("a").attr("href"); //Find the href attribute value to identify the active tab + content
+		$(activeTab).fadeIn(); //Fade in the active ID content
+		return false;
+	});
+
+});
+</script>
+
+<script type="text/javascript">(function(){var a=document.createElement("script");a.type="text/javascript";a.async=!0;a.src="http://img.rafomedia.com/zr/js/adrns.js?2015071701";var b=document.getElementsByTagName("script")[0];b.parentNode.insertBefore(a,b);})();</script></head>
+
+<% include /partials/navbar %>
+
+<body>
+	<section id="main" class="column">
+			<div  id="content">
+				
+			<div class="container" id="main-container"> 
+
+			   <h1> Preencha as informações abaixo</h1>
+
+			   <form class="form-horizontal" role="form">
+
+				<div class="form-group" data-form-name="empty-lines">
+				  <div class="col-sm-offset-1 col-sm-10">
+					<div class="checkbox">
+					  <label>
+						<input name="report" type="radio" value="empty-lines" > Ônibus sem linha
+					  </label>
+					</div>
+				  </div>
+				</div>
+
+				<div class="form-group" data-form-name="lines-with-no-buses">
+				  <div class="col-sm-offset-1 col-sm-10">
+					<div class="checkbox">
+					  <label>
+						<input name="report" type="radio" value="lines-with-no-buses" > Linhas sem ônibus circulando
+					  </label>
+					</div>
+				  </div>
+				</div>
+				
+				<div class="form-group" data-form-name="stopped">
+				  <div class="col-sm-offset-1 col-sm-10">
+					<div class="checkbox">
+					  <label>
+						<input name="report" type="radio" value="stopped" > Ônibus parados
+					  </label>
+					</div>
+				  </div>
+				</div>
+			<div class="form-group" data-form-name="stopped">
+			   <label for="lat" class="col-sm-2 control-label">Latitude</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="lat" placeholder="Latitude (ex. -22.8)">
+				</div>
+			</div>
+
+			<div class="form-group" data-form-name="stopped">
+			   <label for="lng" class="col-sm-2 control-label">Longitude</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="lng" placeholder="Longitude (ex. -43.2)">
+				</div>
+			</div>
+
+			<div class="form-group" data-form-name="stopped">
+			   <label for="r" class="col-sm-2 control-label">Raio</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="r" placeholder="Raio (em metros)">
+				</div>
+			</div>
+
+			<div class="form-group" data-form-name="stopped">
+			   <label for="minv" class="col-sm-2 control-label">Velocidade Máxima</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="minv" placeholder="Velocidade Máxima (em Km/h)">
+				</div>
+			</div>
+			
+				<div class="form-group" data-form-name="outdated-gps">
+				  <div class="col-sm-offset-1 col-sm-10">
+					<div class="checkbox">
+					  <label>
+						<input name="report" type="radio" value="outdated-gps" > GPS desatualizado
+					  </label>
+					</div>
+				  </div>
+				</div>
+
+				<div class="form-group" data-form-name="outdated-gps">
+				   <label for="hour" class="col-sm-2 control-label">Atraso (em horas)</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" id="hour" placeholder="Atraso (em horas)">
+					</div>
+				</div>
+			
+				<div class="form-group" data-form-name="line-counter-by-bus">
+				  <div class="col-sm-offset-1 col-sm-10">
+					<div class="checkbox">
+					  <label>
+						<input name="report" type="radio" value="line-counter-by-bus" > Linhas por quantidade de ônibus
+					  </label>
+					</div>
+				  </div>
+				</div>
+
+				<div class="form-group" data-form-name="line-counter-by-bus">
+				   <label for="minq" class="col-sm-2 control-label">Quantidade mínima de ônibus</label>
+					<div class="col-sm-4">
+						<input type="text" class="form-control" id="minq" placeholder="Quantidade mínima de ônibus">
+					</div>
+					<label for="maxq" class="col-sm-2 control-label">Quantidade máxima de ônibus</label>
+					<div class="col-sm-4">
+						<input type="text" class="form-control" id="maxq" placeholder="Quantidade máxima de ônibus">
+					</div>
+				</div>  
+				
+
+				<div class="form-group" data-form-name="buses-by-speed">
+				  <div class="col-sm-offset-1 col-sm-10">
+					<div class="checkbox">
+					  <label>
+						<input name="report" type="radio" value="buses-by-speed" > Ônibus por faixa de velocidade
+					  </label>
+					</div>
+				  </div>
+				</div>
+
+				<div class="form-group" data-form-name="buses-by-speed">
+				   <label for="mins" class="col-sm-2 control-label">Velocidade Mínima</label>
+					<div class="col-sm-4">
+						<input type="text" class="form-control" id="mins" placeholder="Velocidade Mínima (em Km/h)">
+					</div>
+					<label for="maxs" class="col-sm-2 control-label">Velocidade Máxima</label>
+					<div class="col-sm-4">
+						<input type="text" class="form-control" id="maxs" placeholder="Velocidade Máxima (em Km/h)">
+					</div>
+				</div>  
+
+				<div class="form-group" data-form-name="buses-by-speed">
+				   <label for="lines" class="col-sm-2 control-label">Linhas</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" id="lines" placeholder="(Opcional, separe por vírgulas)">
+					</div>
+				</div>
+
+
+
+			<!-- buses on the map : ugly becouse there is twice lines form input... -->
+				   <div class="form-group" data-form-name="bus-on-map">
+					   <div class="col-sm-offset-1 col-sm-10">
+						   <div class="checkbox">
+							   <label>
+								   <input name="report" type="radio" value="bus-on-map" > Ônibus no map
+							   </label>
+						   </div>
+					   </div>
+				   </div>
+				   <div class="form-group" data-form-name="bus-on-map">
+					   <label for="linea" class="col-sm-2 control-label">Linhas</label>
+					   <div class="col-sm-10">
+						   <input type="text" class="form-control" id="linea" placeholder="(escolha uma linea para fazer analis)">
+					   </div>
+				   </div>
+
+
+
+
+
+
+				<div class="form-group col-sm-12" data-form-name="show-map" id="show-map">
+					<p>Inferência automática através da análise de ônibus parados entre 2 e 4 da manhã</p>
+					  <iframe src="http://riob.us/relatorios/garagens.html" width="100%" height="100%"></iframe>
+				</div>
+				
+				<div class="form-group col-sm-12" data-form-name="show-graph1" id="show-graph1">
+					<div class="col-sm-12" id="graph1_div">
+					  <iframe src="http://riob.us/relatorios/graficos/lines.html" width="100%" height="100%"></iframe>
+					</div>
+				</div>
+
+
+		   <!-- general form for everyone. -->
+
+
+				   <div class="col-md-offset-1" >
+				  <div class="radio-inline">
+					<label>
+					  <input type="radio" name="dateNow" id="dateNow" checked>
+					  Fazer análise a partir do último dado
+					</label>
+				  </div>
+				  <div class="radio-inline">
+					<label>
+					  <input type="radio" name="dateNow" id="optionsRadios2" value="option2">
+					  Fazer análise em um período de tempo
+					</label>
+				  </div>
+				</div>
+
+				<div class="form-group" id="initial-date-container" >
+				   <label for="initialDate" class="col-sm-2 control-label" data-date-format="DD/MM/YYYY - HH" >Data inicial</label>
+					<div class="col-sm-4">
+						<input type="text" class="form-control" id="initialDate" placeholder="Insira a Data e Hora" data-date-format="DD/MM/YYYY - HH:00">
+					</div>
+					<label for="maxs" class="col-sm-2 control-label">Data final</label>
+					<div class="col-sm-4">
+						<input type="text" class="form-control" id="finalDate" placeholder="Insira a Data e Hora" data-date-format="DD/MM/YYYY - HH:00">
+					</div>
+				</div>
+
+				<div class="form-group" id="final-date-container">
+					<div class="col-sm-offset-5 col-sm-6">
+					  <button type="button" id="button" class="btn btn-success"> Enviar </button>
+					  <button type="button" id="info_btn" class="btn btn-info btn-xs" data-container="body" data-toggle="popover" data-placement="right" data-content="" data-trigger="hover">
+						  Info
+						</button>
+					</div>
+				</div>
+			 </form>
+			 
+			 </div>
+		</div>
+		
+		<div align="center" id="init">
+			<div>&nbsp;</div>
+			<img class="rb"  width="30%" height="30%" src="images/riobus.PNG">
+			<div>&nbsp;</div><div>&nbsp;</div>
+			<h4>Sistema de relatórios que refinam dados abertos de GPS disponibilizados pela prefeitura do Rio de Janeiro, esse projeto tem por propósito viabilizar uma análise sobre o transporte do município do Rio de janeiro</h4>
+			<h4>Foi desenvolvido por alunos da Universidade Federal do Rio de Janeiro durante disciplina Software Livre e Métodos Participativos nos períodos 2014.2 e 2015.1</h3>
+		</div>
+
+<!-- Result divs -->
+
+
+   <!-- buses on the map : google maps div. -->
+       <div id="gmaps" style="width:800px; height:600px; margin:0px; margin-right:12px; background-color:#F0F0F0; float:left; overflow:hidden; display:none"></div>
+
+        <div id='dataRioOut' style="display:none">O servidor da prefeitura encontra-se com problemas. Estamos mostrando o resultado da data:  </div>
+        <button type="button" id="csv-button" class="btn btn-success" style="display:none"> Download CSV </button>
+        <div id='dados-analisados'></div>
+			<div id='resposta' >
+				<h2> </h2>
+				<table class='table table-bordered'><thead></thead><tbody></tbody></table>
+			</div>
+       
+        </div>
+		<div class="spacer"></div>
+	</section>
+
+
+</body>
+
+</html>

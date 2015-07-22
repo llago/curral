@@ -20,7 +20,7 @@ var path = require('path');
 var app = express();
 // all environments
 app.set('port', process.env.PORT || 3000);
-app.set('views', __dirname + '/views');
+app.set('views', __dirname + '/views/relatorios/');
 app.set('view engine', 'ejs');
 app.use(express.favicon());
 app.use(express.logger('dev'));
@@ -41,7 +41,15 @@ app.get('/', routes.index);
 
 app.get('/kmrodado', v2.kmrodado);
 
-app.get('/km_bar', v2.km_bar);
+app.get('/km_bar_stCruz', v2.km_bar_stCruz);
+
+app.get('/km_bar_carioca', v2.km_bar_carioca);
+
+app.get('/km_bar_isul', v2.km_bar_isul);
+
+app.get('/km_bar_inorte', v2.km_bar_inorte);
+
+app.get('/nOnibus', v2.nOnibus);
 app.get('/api/bigquery', api.bigquery);
 
 http.createServer(app).listen(app.get('port'), function(){

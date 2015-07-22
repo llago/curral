@@ -1,0 +1,101 @@
+<% include ../partials/header %>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3&amp;libraries=geometry,visualization&sensor=false&amp;"></script>
+
+
+</head>
+
+<% include ../partials/navbar %>
+<body>
+<div class="col-md-10">
+	<div id="main-container">
+			<h1>Rotas e Km</h1>
+			<div style="display: none" class="form-group toggle"  data-form-name="bus-on-map">
+				<div class="col-sm-12">
+					<label for="linea" class="col-sm-3 control-label">Pontos mínimos por ônibus</label>
+					<div class="col-sm-3">
+						<input
+								type="text" class="form-control" id="min-pt-by-bus"
+								value="10">
+					</div>
+					<label for="linea" class="col-sm-4 control-label">Distância máxima entre dos pontos do mesmo ônibus</label>
+					<div class="col-sm-2">
+						<input type="text" class="form-control" id="max-distance"
+							   value="5000">
+					</div>
+				</div>
+				<div class="col-sm-12">
+					<label for="linea" class="col-sm-2 control-label">Mostrar : Rotas</label>
+					<div class="col-sm-1">
+						<input type="checkbox" checked id="mostrar-rotas">
+					</div>
+					<label for="linea" class="col-sm-2 control-label">Pontos</label>
+					<div class="col-sm-1">
+						<input type="checkbox" checked id="mostrar-pontos">
+					</div>
+					<label for="linea" class="col-sm-2 control-label">Direção</label>
+					<div class="col-sm-1">
+						<input type="checkbox" id="mostrar-direcao">
+					</div>
+					<label for="linea" class="col-sm-2 control-label">Calor</label>
+					<div class="col-sm-1">
+						<input type="checkbox" id="mostrar-calor">
+					</div>
+				</div>
+			</div>
+
+			<form class="form-horizontal" role="form">
+
+				<div class="form-group" data-form-name="bus-on-map">
+					<label for="linea" class="col-sm-2 control-label">Linha</label>
+					<div class="col-sm-4">
+						<input type="text" class="form-control" id="linea" value="485"
+							   placeholder="(escolha uma linea para fazer analis)">
+					</div>
+					<label for="idBus" class="col-sm-2 control-label">N° bus</label>
+					<div class="col-sm-4">
+						<input type="text" class="form-control" id="idBus"
+							   placeholder="ou/e um idBus)">
+					</div>
+				</div>
+
+				<div class="form-group" id="initial-date-container">
+					<label for="initialDate" class="col-sm-2 control-label">Data inicial</label>
+					<div class="col-sm-4">
+						<input type="text" class="form-control" id="initialDate" value="01/06/2015 11:45:00"
+							   placeholder="Insira a Data e Hora">
+					</div>
+					<label for="finalDate" class="col-sm-2 control-label">Data final</label>
+					<div class="col-sm-4">
+						<input type="text" class="form-control" id="finalDate" value="01/06/2015 12:00:00"
+							   placeholder="Insira a Data e Hora">
+					</div>
+				</div>
+
+
+				<div class="form-group" id="final-date-container">
+					<div class="col-sm-offset-5 col-sm-6">
+						<button type="button" id="button" class="btn btn-success"
+								onclick="arunQuery();">Enviar</button>
+
+					</div>
+				</div>
+			</form>
+			<div id="map" style="width: 100%; height: 600px; margin: 0px; background-color: #F0F0F0; float: left; overflow: hidden; display: none"></div>
+			<div class="col-sm-12" class="toggle" >
+				<div class="col-sm-12">
+					<h5>
+					<div class="col-sm-3"><span class="col-sm-6"> Onibus</span><span class="col-sm-3">Rota</span><span class="col-sm-3">Pontos</span></div>
+					<div class="col-sm-3">distância total (por pontos lat/lng)</div>
+					<div class="col-sm-3">distância total (por pontos km/h)</div>
+					<div class="col-sm-3">n° pontos differentes / total</div>
+					</h5>
+				</div>
+				<div id="resposta"></div>
+			</div>
+
+		</div>
+	</div>
+</body>
+<script type="text/javascript" src="/js/relatorio/kmrodado.js"></script>
+
+</html>
