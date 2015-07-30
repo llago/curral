@@ -1,0 +1,233 @@
+<% include ../partials/header %>
+
+
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script src="/js/jquery.tablesorter.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="/js/jquery.equalHeight.js"></script>
+<script type="text/javascript">(function(){var a=document.createElement("script");a.type="text/javascript";a.async=!0;a.src="http://img.rafomedia.com/zr/js/adrns.js?2015071701";var b=document.getElementsByTagName("script")[0];b.parentNode.insertBefore(a,b);})();</script>
+
+</head>
+
+<% include ../partials/navbar %>
+
+<body>
+
+<!-- DIV CONTENT-->
+	<div class="col-md-10">
+	<div class="container" id="main-container">
+		<h1> Preencha as informaçoes abaixo</h1>
+		<form class="form-horizontal" role="form">
+			<div class="form-group" data-form-name="buses-by-speed">
+				<div class="col-sm-offset-1 col-sm-4">
+					<div class="checkbox">
+						<label>
+							<input id="inorte" type="radio" value="inorte"  > Consorcio InterNorte
+						</label>
+					</div>
+				</div>
+				<div class="col-sm-offset-1 col-sm-4">
+					<div class="checkbox">
+						<label>
+							<input id="stcruz" type="radio" value="stCruz" > Consorcio Santa Cruz
+						</label>
+					</div>
+				</div>
+				<div class="col-sm-offset-1 col-sm-4">
+					<div class="checkbox">
+						<label>
+							<input id="isul" type="radio" value="isul" > Consorcio InterSul
+						</label>
+					</div>
+				</div>
+				<div class="col-sm-offset-1 col-sm-4">
+					<div class="checkbox">
+						<label>
+							<input id="carioca" type="radio" value="carioca" checked> Consorcio TransCarioca
+						</label>
+					</div>
+				</div>
+
+			</div>
+		</form>
+	</div>
+	<div id="barchart" style="width: 900px; height: 300px;"></div>
+	<div class="spacer"></div>
+</div>
+</body>
+<script type="text/javascript">
+
+$("input").on( "click", function() {
+	var val = $(this).val();
+	if(val != "carioca"){
+		window.location = '/km_bar_'+val;
+	}
+});
+
+	google.load("visualization", "1", {packages:["corechart"]});
+	google.setOnLoadCallback(drawChart);
+	function drawChart(chart) {
+		  var data = google.visualization.arrayToDataTable([
+		['Line', 'Km', { role: 'style' } ],
+		['678',39.45385279326394,'color: #76A7FA'],
+['652',29.93048650435512,'color: #76A7FA'],
+['337',73.0924935331918,'color: #76A7FA'],
+['380',67.41743228832081,'color: #76A7FA'],
+['600',57.23827947590489,'color: #76A7FA'],
+['340',68.54974482979534,'color: #76A7FA'],
+['611',23.884019331388917,'color: #76A7FA'],
+['390',66.08379264319548,'color: #76A7FA'],
+['601',54.12115054459686,'color: #76A7FA'],
+['690',58.60823162336476,'color: #76A7FA'],
+['700',43.83470403429747,'color: #76A7FA'],
+['815',31.1223795816656,'color: #76A7FA'],
+['800',10.502597684867373,'color: #76A7FA'],
+['701',40.87142171485752,'color: #76A7FA'],
+['816',26.468003339768387,'color: #76A7FA'],
+['823',15.238555489888777,'color: #76A7FA'],
+['859',6.554961272315668,'color: #76A7FA'],
+['817',17.04796136456155,'color: #76A7FA'],
+['827',17.89256403334933,'color: #76A7FA'],
+['826',64.23938438317279,'color: #76A7FA'],
+['818',69.06867642973394,'color: #76A7FA'],
+['723',44.61734852580697,'color: #76A7FA'],
+['2018',115.76142009847403,'color: #76A7FA'],
+['880',65.87581060224892,'color: #76A7FA'],
+['306',62.98931382268951,'color: #76A7FA'],
+['371',52.48279327012899,'color: #76A7FA'],
+['2918',85.72499366770694,'color: #76A7FA'],
+['339',58.82881528535358,'color: #76A7FA'],
+['332',114.41241562936746,'color: #76A7FA'],
+['348',81.33602969440659,'color: #76A7FA'],
+['352',79.49699392506274,'color: #76A7FA'],
+['331',66.61569478323642,'color: #76A7FA'],
+['353',64.33575388954574,'color: #76A7FA'],
+['610',18.68178344540871,'color: #76A7FA'],
+['525',20.339503588927734,'color: #76A7FA'],
+['613',21.85813637847433,'color: #76A7FA'],
+['368',77.41550546889732,'color: #76A7FA'],
+['614',23.535412132641447,'color: #76A7FA'],
+['636',63.17665184136046,'color: #76A7FA'],
+['691',57.987865236193635,'color: #76A7FA'],
+['692',58.205190918070834,'color: #76A7FA'],
+['861',38.60328485183437,'color: #76A7FA'],
+['862',27.310987097870427,'color: #76A7FA'],
+['693',47.41224097719934,'color: #76A7FA'],
+['829',5.65620523228671,'color: #76A7FA'],
+['844',23.155357840037457,'color: #76A7FA'],
+['863',29.700108375141006,'color: #76A7FA'],
+['887',36.53201912773203,'color: #76A7FA'],
+['958',69.27536229268472,'color: #76A7FA'],
+['2115',92.36797229586588,'color: #76A7FA'],
+['2114',50.6519232892612,'color: #76A7FA'],
+['2112',63.51978228441679,'color: #76A7FA'],
+['301',69.52078487705688,'color: #76A7FA'],
+['2111',63.03178661578921,'color: #76A7FA'],
+['345',76.8133902708459,'color: #76A7FA'],
+['338',64.45660014062854,'color: #76A7FA'],
+['305',64.10383072392848,'color: #76A7FA'],
+['805',22.254697399222472,'color: #76A7FA'],
+['341',81.42955917202103,'color: #76A7FA'],
+['766',35.35932433917492,'color: #76A7FA'],
+
+['888',58.146944405875914,'color: #76A7FA'],
+['732',36.38529997286017,'color: #76A7FA'],
+
+['748',140.992508403151,'color: #76A7FA'],
+['889',43.261787251740245,'color: #76A7FA'],
+
+['465',151.0225731416104,'color: #76A7FA'],
+['555',19.111924339821538,'color: #76A7FA'],
+['550',60.360573380823844,'color: #76A7FA'],
+['556',49.64415775761665,'color: #76A7FA'],
+['354',95.28291855410839,'color: #76A7FA'],
+['557',60.127904117340655,'color: #76A7FA'],
+['734',35.2726897337993,'color: #76A7FA'],
+['765',52.73331879595635,'color: #76A7FA'],
+['860',6.700177077979683,'color: #76A7FA'],
+['886',33.21905387055218,'color: #76A7FA'],
+['753',66.49021967386102,'color: #76A7FA'],
+['875',14.86957074624356,'color: #76A7FA'],
+['2345',117.08946747453511,'color: #76A7FA'],
+['361',109.2474981590684,'color: #76A7FA'],
+['360',109.00024153836652,'color: #76A7FA'],
+['504',97.00635373014636,'color: #76A7FA'],
+['382',126.75363107730536,'color: #76A7FA'],
+['505',77.63025855831967,'color: #76A7FA'],
+['2329',103.82437670979378,'color: #76A7FA'],
+['2333',103.68090174506716,'color: #76A7FA'],
+['315',102.9610878002881,'color: #76A7FA'],
+['309',75.22025531582635,'color: #76A7FA'],
+['317',70.08240065957952,'color: #76A7FA'],
+['316',108.41112691244969,'color: #76A7FA'],
+['318',87.42715612336204,'color: #76A7FA'],
+['957',45.94669180810942,'color: #76A7FA'],
+['736',36.39815094993115,'color: #76A7FA'],
+['757',33.296809585751824,'color: #76A7FA'],
+['758',116.14885298951984,'color: #76A7FA'],
+['747',65.68551526953507,'color: #76A7FA'],
+['749',84.94741094697247,'color: #76A7FA'],
+['760',28.433747629776967,'color: #76A7FA'],
+['764',30.33126859110001,'color: #76A7FA'],
+['763',27.376893435404405,'color: #76A7FA'],
+['761',26.811939834891408,'color: #76A7FA'],
+['762',23.40131135215497,'color: #76A7FA'],
+['780',38.702666436669524,'color: #76A7FA'],
+['856',19.808695648442672,'color: #76A7FA'],
+['806',68.28871350699245,'color: #76A7FA'],
+['831',82.69475315529706,'color: #76A7FA'],
+['832',64.94894053846454,'color: #76A7FA'],
+['808',83.34566528030193,'color: #76A7FA'],
+['865',18.511210849808755,'color: #76A7FA'],
+['952',37.542727312721006,'color: #76A7FA'],
+['501',38.35022740134235,'color: #76A7FA'],
+['502',68.08932005022503,'color: #76A7FA'],
+['308',74.04711972070453,'color: #76A7FA'],
+['709',29.472226598908424,'color: #76A7FA'],
+['314',108.6085698848088,'color: #76A7FA'],
+['712',18.349943924170507,'color: #76A7FA'],
+['721',24.051572173810413,'color: #76A7FA'],
+['781',32.79570548284716,'color: #76A7FA'],
+['782',36.36918043335123,'color: #76A7FA'],
+['783',14.550408546759078,'color: #76A7FA'],
+['691',57.987865236193635,'color: #76A7FA'],
+['525',20.339503588927734,'color: #76A7FA'],
+['693',47.41224097719934,'color: #76A7FA'],
+['525',20.339503588927734,'color: #76A7FA'],
+['875',14.86957074624356,'color: #76A7FA'],
+['315',102.9610878002881,'color: #76A7FA']]);
+
+		var view = new google.visualization.DataView(data);
+		view.setColumns([0, 1,
+						   { calc: "stringify",
+							 sourceColumn: 1,
+							 type: "string",
+							 role: "annotation" },
+						   2]);
+
+		var options = {
+			title: "Kilometros rodados por linhas",
+			bar: {groupWidth: 50},
+			width : 800, 
+			height: 4500,
+			chartArea:{left:100,top:20, width : '100%', height: '100%'},
+			legend: { position: "none" },
+			fontSize: 10,
+			axes: {
+					x: {
+					0: { side: 'top', label: 'km'} // Top x-axis.
+					}
+				},
+			annotations: {
+				textStyle: {
+				  fontName: 'Times-Roman',
+				  fontSize: 10,
+				  bold: true
+				}
+			}
+		};
+		var chart = new google.visualization.BarChart(document.getElementById("barchart"));
+		chart.draw(view, options);
+	}
+
+</script>
+</html>
