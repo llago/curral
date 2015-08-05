@@ -9,27 +9,34 @@
 <div class="col-md-10">
 	<div id="main-container">
 			<h1>Curral Eletrônico</h1>
-			<div style="display: none" class="form-group toggle"  data-form-name="bus-on-map">
-
-				<div class="col-sm-12">
-					<label for="linea" class="col-sm-2 control-label">Rodoviaria 1</label>
-					<div class="col-sm-1">
-						<input type="checkbox" checked id="rodoviaria1">
+			<form class="form-horizontal" role="form">
+				<div class="form-group" data-form-name="buses-by-speed">
+					<div class="col-sm-offset-1 col-sm-4">
+						<div class="checkbox">
+							<label>
+								<input id="alvorada" name="rodoviarias" 
+								type="radio" value=polyAlvorada checked >Terminal Alvorada
+							</label>
+						</div>
 					</div>
-					<label for="linea" class="col-sm-2 control-label">Rodoviaria 2</label>
-					<div class="col-sm-1">
-						<input type="checkbox" checked id="rodoviaria2">
+					<div class="col-sm-offset-1 col-sm-4">
+						<div class="checkbox">
+							<label>
+								<input id="campoGrande" name="rodoviarias"
+								type="radio" value="polyCampoGrande" > Terminal Campo Grande
+							</label>
+						</div>
 					</div>
-					<label for="linea" class="col-sm-2 control-label">Rodoviaria 3</label>
-					<div class="col-sm-1">
-						<input type="checkbox" id="rodoviaria3">
+					<div class="col-sm-offset-1 col-sm-4">
+						<div class="checkbox">
+							<label>
+								<input id="procopio" type="radio" 
+								name="rodoviarias"	value="polyProcopio" > Terminal Procópio Ferreira
+							</label>
+						</div>
 					</div>
-					<label for="linea" class="col-sm-2 control-label">Rodoviaria 4</label>
-					<div class="col-sm-1">
-						<input type="checkbox" id="rodoviaria4">
-					</div>
-				</div>
 			</div>
+		</form>
 
 			<form class="form-horizontal" role="form">
 
@@ -38,12 +45,12 @@
 				<div class="form-group" id="initial-date-container">
 					<label for="initialDate" class="col-sm-2 control-label">Data inicial</label>
 					<div class="col-sm-4">
-						<input type="text" class="form-control" id="initialDate" value="01/06/2015 11:45:00"
+						<input type="text" class="form-control" id="initialDate" value="01/07/2015 11:45:00"
 							   placeholder="Insira a Data e Hora">
 					</div>
 					<label for="finalDate" class="col-sm-2 control-label">Data final</label>
 					<div class="col-sm-4">
-						<input type="text" class="form-control" id="finalDate" value="01/06/2015 12:00:00"
+						<input type="text" class="form-control" id="finalDate" value="01/07/2015 12:00:00"
 							   placeholder="Insira a Data e Hora">
 					</div>
 				</div>
