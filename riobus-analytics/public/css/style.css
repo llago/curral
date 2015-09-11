@@ -1,0 +1,45 @@
+#dvLoading {
+	background:url(loading.gif) no-repeat center center;
+	height: 100%;
+	width: 100%;
+	position: fixed;
+	left: 0;
+	top: 0;
+	margin: 0 0 0 0;
+	z-index: 2;
+	
+}
+.rb{
+	text-align: left;
+}
+
+ul{
+    list-style-type: none;
+}
+
+body {
+	z-index: 1;
+}
+.menu{
+	background-color:#F0F0F0;
+	height: 100%;
+	border-bottom: 1px solid #CCC; 
+	border-right: 1px solid #CCC; 
+	margin-bottom: 20px;
+}
+a { cursor: pointer; }
+
+
+#show-map{
+	height: 600px;	
+}
+
+#show-graph1 {
+	height: 1200px;
+	z-index: 99;
+}
+
+iframe {
+	height: 1200px;
+	width: 1200px;
+}

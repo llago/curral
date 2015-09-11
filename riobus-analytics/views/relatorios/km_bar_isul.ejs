@@ -1,0 +1,201 @@
+<% include ../partials/header %>
+
+
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script src="/js/jquery.tablesorter.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="/js/jquery.equalHeight.js"></script>
+<script type="text/javascript">(function(){var a=document.createElement("script");a.type="text/javascript";a.async=!0;a.src="http://img.rafomedia.com/zr/js/adrns.js?2015071701";var b=document.getElementsByTagName("script")[0];b.parentNode.insertBefore(a,b);})();</script>
+
+</head>
+
+<% include ../partials/navbar %>
+
+<body>
+
+<!-- DIV CONTENT-->
+<div class="col-md-10">
+	<div class="container" id="main-container">
+		<h1> Preencha as informaçoes abaixo</h1>
+		<form class="form-horizontal" role="form">
+			<div class="form-group" data-form-name="buses-by-speed">
+				<div class="col-sm-offset-1 col-sm-4">
+					<div class="checkbox">
+						<label>
+							<input id="inorte" type="radio" value="inorte"  > Consorcio InterNorte
+						</label>
+					</div>
+				</div>
+				<div class="col-sm-offset-1 col-sm-4">
+					<div class="checkbox">
+						<label>
+							<input id="stcruz" type="radio" value="stCruz" > Consorcio Santa Cruz
+						</label>
+					</div>
+				</div>
+				<div class="col-sm-offset-1 col-sm-4">
+					<div class="checkbox">
+						<label>
+							<input id="isul" type="radio" value="isul"checked > Consorcio InterSul
+						</label>
+					</div>
+				</div>
+				<div class="col-sm-offset-1 col-sm-4">
+					<div class="checkbox">
+						<label>
+							<input id="carioca" type="radio" value="carioca" > Consorcio TransCarioca
+						</label>
+					</div>
+				</div>
+
+			</div>
+		</form>
+	</div>
+	<div id="barchart" style="width: 900px; height: 300px;"></div>
+	<div class="spacer"></div>
+</div>
+</body>
+
+
+<script type="text/javascript">
+
+
+	$("input").on( "click", function() {
+		var val = $(this).val();
+		if(val != "isul"){
+			window.location = '/km_bar_'+val;
+		}
+	});
+
+google.load("visualization", "1", {packages:["corechart"]});
+google.setOnLoadCallback(drawChart);
+function drawChart(chart) {
+	var data = google.visualization.arrayToDataTable([
+		['Line', 'Km', { role: 'style' } ],
+		['435',50.92135637351444,'color: #76A7FA'],
+		['436',40.551082798680795,'color: #76A7FA'],
+		['464',46.875885675471935,'color: #76A7FA'],
+		['2015',33.51948442075703,'color: #76A7FA'],
+		['2014',37.81079225684563,'color: #76A7FA'],
+		['125',30.491560040623426,'color: #76A7FA'],
+		['217',22.03872097033848,'color: #76A7FA'],
+		['124',47.43617972961904,'color: #76A7FA'],
+		['2017',43.201608578031916,'color: #76A7FA'],
+		['409',38.47892591407672,'color: #76A7FA'],
+		['416',28.272261936526608,'color: #76A7FA'],
+		['602',8.553199968295022,'color: #76A7FA'],
+		['186',37.058787358909974,'color: #76A7FA'],
+		['158',32.426534328795526,'color: #76A7FA'],
+		['176',40.54114855373629,'color: #76A7FA'],
+		['2203',30.302150310066853,'color: #76A7FA'],
+		['523',60.32226226021853,'color: #76A7FA'],
+		['524',48.87721536213901,'color: #76A7FA'],
+		['448',23.59301323821059,'color: #76A7FA'],
+		['226',23.89743353255916,'color: #76A7FA'],
+		['229',21.069087864627438,'color: #76A7FA'],
+		['220',21.85129527039191,'color: #76A7FA'],
+		['603',9.130166576305061,'color: #76A7FA'],
+		['608',10.311277721043302,'color: #76A7FA'],
+		['441',49.593789985939495,'color: #76A7FA'],
+		['445',25.557386109290945,'color: #76A7FA'],
+		['461',30.47885493310409,'color: #76A7FA'],
+		['210',25.607292018717807,'color: #76A7FA'],
+		['604',4.114525827705804,'color: #76A7FA'],
+		['472',47.22064554261166,'color: #76A7FA'],
+		['476',43.87524134159145,'color: #76A7FA'],
+		['475',54.48310248947032,'color: #76A7FA'],
+		['473',36.02940490381346,'color: #76A7FA'],
+		['474',60.75843116247766,'color: #76A7FA'],
+		['503',5.042233248196572,'color: #76A7FA'],
+
+		['209',25.041954429939086,'color: #76A7FA'],
+		['107',24.96668430503932,'color: #76A7FA'],
+		['110',34.24495088196452,'color: #76A7FA'],
+		['111',17.27146163889844,'color: #76A7FA'],
+		['121',29.060040712769496,'color: #76A7FA'],
+		['120',22.360287625429635,'color: #76A7FA'],
+		['123',33.479730944592795,'color: #76A7FA'],
+		['126',29.94162938153846,'color: #76A7FA'],
+		['128',42.410969925414236,'color: #76A7FA'],
+		['127',35.25901642477032,'color: #76A7FA'],
+		['170',38.76155563726963,'color: #76A7FA'],
+		['129',8.793880261634957,'color: #76A7FA'],
+		['132',37.131713023774005,'color: #76A7FA'],
+		['172',40.42970295720425,'color: #76A7FA'],
+		['173',35.610359467601214,'color: #76A7FA'],
+		['178',43.435249744823395,'color: #76A7FA'],
+		['181',84.21479393733584,'color: #76A7FA'],
+		['442',31.984098871474295,'color: #76A7FA'],
+		['190',30.37143987772174,'color: #76A7FA'],
+		['444',26.65156553113179,'color: #76A7FA'],
+		['440',36.91345709573524,'color: #76A7FA'],
+		['443',35.100522685550054,'color: #76A7FA'],
+		['462',24.344658436159644,'color: #76A7FA'],
+		['463',24.536318577070315,'color: #76A7FA'],
+		['460',25.844255087515123,'color: #76A7FA'],
+		['133',23.052588252919836,'color: #76A7FA'],
+		['119',24.14321995677236,'color: #76A7FA'],
+		['136',35.80525324044197,'color: #76A7FA'],
+		['154',37.55981844311044,'color: #76A7FA'],
+		['155',16.476182939800292,'color: #76A7FA'],
+		['161',33.263243846791795,'color: #76A7FA'],
+		['162',32.59689909746552,'color: #76A7FA'],
+		['180',19.10385485271479,'color: #76A7FA'],
+		['511',27.21662220066296,'color: #76A7FA'],
+		['184',16.35539391761906,'color: #76A7FA'],
+		['512',27.626924177467462,'color: #76A7FA'],
+		['183',14.604978922638283,'color: #76A7FA'],
+		['569',13.51801339589725,'color: #76A7FA'],
+		['570',29.55122472299918,'color: #76A7FA'],
+		['513',8.083426424417942,'color: #76A7FA'],
+		['580',6.586786913975635,'color: #76A7FA'],
+		['584',29.619395638988628,'color: #76A7FA'],
+		['583',32.06807096044972,'color: #76A7FA'],
+		['6',38.64316269030207,'color: #76A7FA'],
+		['10',14.471552654606882,'color: #76A7FA'],
+		['7',22.18742071666712,'color: #76A7FA'],
+		['14',12.742766817506022,'color: #76A7FA'],
+		['410',43.58811095418837,'color: #76A7FA'],
+		['422',44.4315222233552,'color: #76A7FA'],
+		['507',15.860798746494437,'color: #76A7FA'],
+		['421',32.59850536109223,'color: #76A7FA'],
+		['157',40.69325632437962,'color: #76A7FA'],
+		['420',25.63597547556815,'color: #76A7FA'],
+		['222',21.292720118302363,'color: #76A7FA'],
+		['432',49.122499297090364,'color: #76A7FA']
+		]);
+
+		var view = new google.visualization.DataView(data);
+		view.setColumns([0, 1,
+						   { calc: "stringify",
+							 sourceColumn: 1,
+							 type: "string",
+							 role: "annotation" },
+						   2]);
+
+		var options = {
+			title: "Kilometros rodados por linhas",
+			bar: {groupWidth: 50},
+			width : 800, 
+			height: 4500,
+			chartArea:{left:100,top:20, width : '100%', height: '100%'},
+			legend: { position: "none" },
+			fontSize: 10,
+			axes: {
+					x: {
+					0: { side: 'top', label: 'km'} // Top x-axis.
+					}
+				},
+			annotations: {
+				textStyle: {
+				  fontName: 'Times-Roman',
+				  fontSize: 10,
+				  bold: true
+				}
+			}
+		};
+		var chart = new google.visualization.BarChart(document.getElementById("barchart"));
+		chart.draw(view, options);
+	}
+
+</script>
+</html>
