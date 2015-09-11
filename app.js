@@ -50,6 +50,9 @@ app.get('/km_bar_isul', v2.km_bar_isul);
 app.get('/km_bar_inorte', v2.km_bar_inorte);
 
 app.get('/nOnibus', v2.nOnibus);
+
+app.get('/curral', v2.curral);
+
 app.get('/api/bigquery', api.bigquery);
 
 http.createServer(app).listen(app.get('port'), function(){

@@ -1,0 +1,85 @@
+<% include ../partials/header %>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3&amp;libraries=geometry,visualization&sensor=false&amp;"></script>
+
+
+</head>
+
+<% include ../partials/navbar %>
+<body>
+<div class="col-md-10">
+	<div id="main-container">
+			<h1>Curral Eletrônico</h1>
+			<form class="form-horizontal" role="form">
+				<div class="form-group" data-form-name="buses-by-speed">
+					<div class="col-sm-offset-1 col-sm-4">
+						<div class="checkbox">
+							<label>
+								<input id="alvorada" name="rodoviarias" 
+								type="radio" value=polyAlvorada checked >Terminal Alvorada
+							</label>
+						</div>
+					</div>
+					<div class="col-sm-offset-1 col-sm-4">
+						<div class="checkbox">
+							<label>
+								<input id="campoGrande" name="rodoviarias"
+								type="radio" value="polyCampoGrande" > Terminal Campo Grande
+							</label>
+						</div>
+					</div>
+					<div class="col-sm-offset-1 col-sm-4">
+						<div class="checkbox">
+							<label>
+								<input id="procopio" type="radio" 
+								name="rodoviarias"	value="polyProcopio" > Terminal Procópio Ferreira
+							</label>
+						</div>
+					</div>
+			</div>
+		</form>
+
+			<form class="form-horizontal" role="form">
+
+
+
+				<div class="form-group" id="initial-date-container">
+					<label for="initialDate" class="col-sm-2 control-label">Data inicial</label>
+					<div class="col-sm-4">
+						<input type="text" class="form-control" id="initialDate" value="01/07/2015 11:45:00"
+							   placeholder="Insira a Data e Hora">
+					</div>
+					<label for="finalDate" class="col-sm-2 control-label">Data final</label>
+					<div class="col-sm-4">
+						<input type="text" class="form-control" id="finalDate" value="01/07/2015 12:00:00"
+							   placeholder="Insira a Data e Hora">
+					</div>
+				</div>
+
+
+				<div class="form-group" id="final-date-container">
+					<div class="col-sm-offset-5 col-sm-6">
+						<button type="button" id="button" class="btn btn-success"
+								onclick="runSearch();">Enviar</button>
+
+					</div>
+				</div>
+			</form>
+			<div id="map" style="width: 100%; height: 600px; margin: 0px; background-color: #F0F0F0; float: left; overflow: hidden; display: none"></div>
+			<div class="col-sm-12" class="toggle" >
+				<div class="col-sm-12">
+					<h5>	
+					<div class="col-sm-3">Código do Ônibus</div>
+					<div class="col-sm-3">Linha</div>
+					<div class="col-sm-3">Hora</div>
+					</h5>
+				</div>
+				<div id="resposta"></div>
+			</div>
+
+		</div>
+	</div>
+</body>
+<script type="text/javascript" src="/js/relatorio/curral.js"></script>
+<script type="text/javascript" src="/js/maps.google.polygon.containsLatLng.js"></script>   
+
+</html>

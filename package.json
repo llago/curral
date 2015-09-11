@@ -7,9 +7,9 @@
     "start": "node app.js"
   },
   "dependencies": {
-    "express": "3.3.5",
     "ejs": "*",
-    "gcloud" : "0.16.0",
-    "googleapis" : "2.0.6"
+    "express": "3.3.5",
+    "gcloud": "^0.16.0",
+    "googleapis": "2.0.6"
   }
 }

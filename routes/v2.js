@@ -21,3 +21,7 @@ exports.km_bar_isul = function(req, res){
 exports.nOnibus = function(req, res){
   res.render('nOnibus', { title: 'Numero de Onibus' });
 };
+
+exports.curral = function(req, res){
+  res.render('curral', { title: 'Curral Eletronico' });
+};
